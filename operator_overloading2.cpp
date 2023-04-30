@@ -6,6 +6,7 @@ class Square
 
 public:
     int length;
+    int x = 100;
 
     Square(int length = 0)
     {
@@ -27,6 +28,7 @@ public:
     void operator++(int)
     {
         this->length++;
+        this->x++;
     }
 };
 
@@ -69,9 +71,11 @@ int main()
     Square s3 = s1 + s2;
 
     cout << s3.Area() << endl;
-
+    cout << "s1 length" << s1.length << endl;
+    cout << "s1 x" << s1.x << endl;
     s1++;
-    cout << s1.length << endl;
+    cout << "s1 length" << s1.length << endl;
+    cout << "s1 x" << s1.x << endl;
     rectangle rec1(20, 10);
 
     cout << "rectangle area :" << rec1.Area() << endl;

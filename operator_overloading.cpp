@@ -40,9 +40,7 @@ public:
         num /= GCD;
         den /= GCD;
 
-        numerator = num;
-        denominator = den;
-        return *this;
+        return Fraction(num, den);
     }
 
     Fraction operator*(const Fraction x)
@@ -56,8 +54,7 @@ public:
         num /= GCD;
         den /= GCD;
 
-        Fraction f(num, den);
-        return f;
+        return Fraction(num, den);
     }
 };
 
@@ -67,9 +64,13 @@ int main()
     Fraction f1(1, 3);
     Fraction f2(3, 2);
 
-    cout << &f2 << endl;
     Fraction f3 = f1 + f2;
     Fraction f4 = f1 * f2;
+
+    cout << &f1 << endl;
+    cout << &f2 << endl;
+    cout << &f3 << endl;
+    cout << &f4 << endl;
 
     cout << f1.numerator << "/" << f1.denominator << " + " << f2.numerator << "/" << f2.denominator << " is " << f3.numerator << "/" << f3.denominator << endl;
 
