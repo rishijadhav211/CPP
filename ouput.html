@@ -1,0 +1,55 @@
+
+<html>
+<sctipt>
+
+
+
+function consolidateLogs(logs) {
+    const consolidatedLogs = {};
+  
+    logs.forEach((logBatch) => {
+      Object.entries(logBatch).forEach(([serviceName, logEntry]) => {
+        if (
+          !consolidatedLogs[serviceName] ||
+          logEntry.timestamp > consolidatedLogs[serviceName].timestamp
+        ) {
+          consolidatedLogs[serviceName] = logEntry;
+        }
+      });
+    });
+  
+    const sortedLogs = Object.entries(consolidatedLogs).sort(
+      (a, b) => new Date(a[1].timestamp) - new Date(b[1].timestamp)
+    );
+  
+    const finalOutput = Object.fromEntries(sortedLogs);
+  
+    return finalOutput;
+  }
+  
+  // Input log data
+  const logs = [
+    {
+      "micro-service-a1": { log_type: "INFO", timestamp: "2023-07-24 12:30:00" },
+      "micro-service-c1": { log_type: "ERROR", timestamp: "2023-07-24 12:40:00" },
+      "micro-service-c2": { log_type: "DEBUG", timestamp: "2023-07-24 12:35:00" },
+      "micro-service-d1": { log_type: "ERROR", timestamp: "2023-07-24 12:20:00" },
+      "micro-service-b2": { log_type: "INFO", timestamp: "2023-07-24 12:45:00" },
+    },
+    {
+      "micro-service-b2": { log_type: "DEBUG", timestamp: "2023-07-24 12:50:00" },
+      "micro-service-z2": { log_type: "ERROR", timestamp: "2023-07-24 12:55:00" },
+      "micro-service-g2": { log_type: "ERROR", timestamp: "2023-07-24 12:52:00" },
+      "micro-service-d1": { log_type: "DEBUG", timestamp: "2023-07-24 12:48:00" },
+    },
+  ];
+  
+  // Output
+  const result = consolidateLogs(logs);
+  console.log(result);
+
+  </sctipt>
+
+  
+    <h1>hello</h1>
+  </html>

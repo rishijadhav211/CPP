@@ -71,13 +71,16 @@ int compareAge(Person &p1, Person &p2)
 }
 int main()
 {
+    Student ss;
+    ss.display();
     Student s1("XYZ", 19, "UnderGraduate");
     Person p1("ABC", 23);
 
     // Student *s3 = p1;
 
     Student *s = new Student("rj", 22, "udegraduate");
-
+    Student *s34 = new Student();
+    s34->display();
     s->setGrades(90);
     s->display();
 
